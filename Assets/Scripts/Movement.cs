@@ -14,22 +14,26 @@ public class Movement : MonoBehaviour
         MoveHead();
     }
 
+    void FixedUpdate(){
+        MoveKeys();
+    }
+
     void MoveKeys(){
-        if  (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
-            transform.position += new Vector3(0, 0, 1f * this.moveSpeed );
+            transform.position += transform.forward * this.moveSpeed * Time.deltaTime;
         }
-        if  (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
-            transform.position += new Vector3(0, 0, -1f * this.moveSpeed );
+            transform.position -= transform.forward * this.moveSpeed * Time.deltaTime;
         }
-        if  (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            transform.position += new Vector3(-1f * this.moveSpeed , 0, 0);
+            transform.position -= transform.right * this.moveSpeed * Time.deltaTime;
         }
-        if  (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
-            transform.position += new Vector3(1f * this.moveSpeed , 0, 0);
+            transform.position += transform.right * this.moveSpeed * Time.deltaTime;
         }
     }
 
